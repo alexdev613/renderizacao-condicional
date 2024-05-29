@@ -6,6 +6,15 @@ function App() {
 
   const [signed2, setSigned2] = useState(false);
 
+  const [input, setInput] = useState<string>("");
+  const [username, setUsername] = useState("");
+
+
+  function handleString() {
+    setUsername(input);
+    setInput('')
+  }
+
   return (
     <div>
       <h1>Olá mundo</h1>
@@ -31,6 +40,8 @@ function App() {
       <br /><br />
       <hr />
 
+      {/*---------------------------------------------------------------------------*/}
+
       <h3>Segungo exemplo (Renderização condicional com operador lógico AND '&&'):</h3>
       <br />
 
@@ -48,6 +59,43 @@ function App() {
       )}
       <br />
       <hr />
+
+      {/*---------------------------------------------------------------------------*/}
+
+      <br />
+
+
+      <div>
+        <h3>Terceiro exemplo (Renderização condicional com operador lógico AND '&&'):</h3>
+        <br />
+        
+        <p>
+          Teste com uma palavra menor que 8 caracteres e outra maior que esta condição,
+          somente as que tem mais de 8 caracteres serão renderizadas!
+        </p>
+        <br />
+
+        <label htmlFor="">Digite um nome: </label>
+        <input
+          type="text"
+          placeholder='digite um nome'
+          value={input}
+          onChange={ (e) => setInput(e.target.value) }
+         />
+         <br /><br />
+
+         <button onClick={handleString}>Enviar nome!</button>
+         <br /><br />
+          
+          {username.length >= 8 && (
+            <div>
+              <h1>Username muito grande!</h1>
+              <h2>Nome do usuário é: {username}</h2>
+            </div>
+          )}
+
+      </div>
+
     </div>
   )
 }
